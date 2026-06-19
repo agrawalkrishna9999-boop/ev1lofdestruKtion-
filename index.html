@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ev1lofDestruKtion | Premium Web Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --accent-blue: #00d2ff;
+            --accent-purple: #8a2be2;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+
+        /* Navbar */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 15px 0;
+            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border); z-index: 1000;
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 900; color: #fff; text-decoration: none; }
+        .logo span { color: var(--accent-blue); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.1) 0%, transparent 80%);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; margin-bottom: 20px; line-height: 1.1; }
+        .hero h1 span { color: var(--accent-blue); }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 750px; margin-bottom: 35px; }
+
+        /* Section Styling */
+        .section { padding: 120px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .heading { font-size: 2.8rem; text-align: center; margin-bottom: 60px; font-weight: 900; letter-spacing: -1px; }
+        .heading span { color: var(--accent-purple); }
+
+        /* Features/What You Get Grid */
+        .grid-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feat-card { 
+            background: var(--glass-bg); padding: 40px; border-radius: 24px; 
+            border: 1px solid var(--glass-border); transition: 0.4s;
+        }
+        .feat-card:hover { border-color: var(--accent-blue); background: rgba(255,255,255,0.08); transform: translateY(-10px); }
+        .feat-card h3 { color: var(--accent-blue); margin-bottom: 15px; font-size: 1.4rem; }
+
+        /* Target Audience Section */
+        .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+        .audience-box { padding: 30px; background: rgba(138, 43, 226, 0.05); border-radius: 20px; border: 1px solid var(--glass-border); }
+        .audience-box h4 { margin-top: 10px; color: #fff; }
+
+        /* Process Steps */
+        .process-container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
+        .step { flex: 1; min-width: 200px; background: var(--glass-bg); padding: 30px; border-radius: 15px; border-left: 4px solid var(--accent-blue); }
+        .step-num { font-size: 2rem; font-weight: 900; color: var(--accent-blue); margin-bottom: 10px; }
+
+        /* Pricing Section */
+        .pricing-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .p-card { 
+            background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); 
+            padding: 50px 40px; border-radius: 30px; width: 100%; max-width: 350px; 
+            transition: 0.4s; position: relative;
+        }
+        .p-card.popular { border: 2px solid var(--accent-purple); transform: scale(1.05); background: rgba(138, 43, 226, 0.05); }
+        .price { font-size: 3.5rem; font-weight: 900; margin: 25px 0; }
+        .p-card ul { list-style: none; margin-bottom: 30px; }
+        .p-card li { margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem; }
+        .p-card li::before { content: "✓ "; color: var(--accent-blue); }
+
+        /* Contact & Form */
+        .contact-flex { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: start; }
+        .contact-info h3 { font-size: 2rem; margin-bottom: 20px; }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        input, select, textarea { 
+            background: var(--glass-bg); border: 1px solid var(--glass-border); 
+            padding: 18px; border-radius: 12px; color: white; width: 100%; outline: none; font-size: 1rem;
+        }
+        input:focus, textarea:focus { border-color: var(--accent-blue); }
+
+        /* Button */
+        .btn { padding: 18px 40px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-blue { background: var(--accent-blue); color: #000; }
+        .btn-purple { background: var(--accent-purple); color: #fff; box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3); }
+        .btn-whatsapp { background: #25D366; color: white; width: 100%; text-align: center; }
+
+        /* Animation Classes */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .contact-flex { grid-template-columns: 1fr; }
+            .heading { font-size: 2.2rem; }
+            .p-card.popular { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-inner">
+        <a href="#" class="logo">Ev1lofDestruKtion<span>.</span></a>
+        <a href="#contact" class="btn btn-blue" style="padding: 10px 20px; font-size: 0.8rem;">Let's Talk</a>
+    </div>
+</nav>
+
+<section class="hero container">
+    <div class="reveal active">
+        <h1>Get Your Business Online In <span>1–3 Days</span></h1>
+        <p>If your business is not online, you're already behind. I build modern, high-performance websites for local businesses and service providers.</p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="#contact" class="btn btn-purple">Start My Project</a>
+            <a href="#pricing" class="btn btn-blue" style="background: transparent; color: white; border: 1px solid var(--glass-border);">View Plans</a>
+        </div>
+    </div>
+</section>
+
+<section class="section container reveal">
+    <h2 class="heading">What You <span>Get</span></h2>
+    <div class="grid-features">
+        <div class="feat-card"><h3>✨ Modern Design</h3><p>Clean, premium aesthetics that make your business stand out from the local competition.</p></div>
+        <div class="feat-card"><h3>📍 Google Maps</h3><p>Full integration so customers can find your physical location with one tap.</p></div>
+        <div class="feat-card"><h3>⚡ Speed</h3><p>Fast and smooth performance ensuring no customer leaves due to slow loading.</p></div>
+        <div class="feat-card"><h3>📩 Enquiry Form</h3><p>Direct contact forms that send leads straight to your email or WhatsApp.</p></div>
+        <div class="feat-card"><h3>📱 Responsive</h3><p>Your site will look perfect on everything from iPhones to 4K Monitors.</p></div>
+        <div class="feat-card"><h3>🌍 Fully Deployed</h3><p>No technical headache. I handle the hosting and make your site live for the world.</p></div>
+    </div>
+</section>
+
+<section class="section container reveal" style="background: rgba(255,255,255,0.01);">
+    <h2 class="heading">Who This Is <span>For</span></h2>
+    <div class="audience-grid">
+        <div class="audience-box"><h4>Coaching Centers</h4></div>
+        <div class="audience-box"><h4>Gyms & Salons</h4></div>
+        <div class="audience-box"><h4>Cafes & Restaurants</h4></div>
+        <div class="audience-box"><h4>Real Estate Agents</h4></div>
+    </div>
+</section>
+
+<section class="section container reveal">
+    <h2 class="heading">Why This <span>Works</span></h2>
+    <div class="grid-features">
+        <div class="feat-card" style="border-left: 4px solid var(--accent-purple);">
+            <h3>Builds Trust</h3><p>A professional website makes you 10x more credible than a business with just a social media page.</p>
+        </div>
+        <div class="feat-card" style="border-left: 4px solid var(--accent-purple);">
+            <h3>24/7 Availability</h3><p>Your website takes enquiries even while you sleep. Your business never closes.</p>
+        </div>
+        <div class="feat-card" style="border-left: 4px solid var(--accent-purple);">
+            <h3>Beat Competition</h3><p>Most local businesses have outdated sites. This is your chance to take the lead.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section container reveal">
+    <h2 class="heading">The <span>Process</span></h2>
+    <div class="process-container">
+        <div class="step"><div class="step-num">01</div><p>Send Your Details & Business Requirements</p></div>
+        <div class="step"><div class="step-num">02</div><p>I Build Your Custom Website in 72 Hours</p></div>
+        <div class="step"><div class="step-num">03</div><p>You Review and Request Any Changes</p></div>
+        <div class="step"><div class="step-num">04</div><p>Website Goes Live on Your Domain</p></div>
+    </div>
+</section>
+
+<section id="pricing" class="section container reveal">
+    <h2 class="heading">Affordable <span>Plans</span></h2>
+    <div class="pricing-grid">
+        <div class="p-card">
+            <h3>Basic</h3>
+            <div class="price">₹1,299</div>
+            <ul>
+                <li>1 Page Layout</li>
+                <li>Netlify Hosting</li>
+                <li>Basic Enquiry Form</li>
+                <li>1 Revision</li>
+            </ul>
+            <a href="#contact" class="btn btn-blue" style="width:100%; text-align: center;">Get Started</a>
+        </div>
+        <div class="p-card popular">
+            <div class="badge">Most Popular</div>
+            <h3 style="color: var(--accent-purple);">Standard</h3>
+            <div class="price">₹2,499</div>
+            <ul>
+                <li>3-4 Pages</li>
+                <li>WhatsApp Integration</li>
+                <li>Advanced Enquiry Form</li>
+                <li>2 Revisions</li>
+            </ul>
+            <a href="#contact" class="btn btn-purple" style="width:100%; text-align: center;">Get Started</a>
+        </div>
+        <div class="p-card">
+            <h3>Premium</h3>
+            <div class="price">₹4,499</div>
+            <ul>
+                <li>5+ Pages</li>
+                <li>SEO Basic Setup</li>
+                <li>Custom Branding</li>
+                <li>3 Revisions</li>
+            </ul>
+            <a href="#contact" class="btn btn-blue" style="width:100%; text-align: center;">Get Started</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section container reveal">
+    <div class="contact-flex">
+        <div class="contact-info">
+            <h2 style="font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px;">Let's Get You Customers <span>Online</span></h2>
+            <p style="margin-bottom: 30px; color: var(--text-muted);">Limited daily slots available. Secure your spot now and get your website ready in under 3 days.</p>
+            <a href="https://wa.me/919329013989" target="_blank" class="btn btn-whatsapp">Chat on WhatsApp</a>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">Email: agrawalkrishna9999@gmail.com</p>
+        </div>
+        <div class="form-container" style="background: var(--glass-bg); padding: 40px; border-radius: 30px; border: 1px solid var(--glass-border);">
+            <form action="https://formspree.io/f/mojpprbb" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="text" name="business" placeholder="Business Name" required>
+                <select name="plan">
+                    <option>Standard Plan - ₹2,499</option>
+                    <option>Basic Plan - ₹1,299</option>
+                    <option>Premium Plan - ₹4,499</option>
+                </select>
+                <textarea name="message" rows="5" placeholder="Tell me about your business..."></textarea>
+                <button type="submit" class="btn btn-purple" style="width: 100%;">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer style="padding: 60px 0; border-top: 1px solid var(--glass-border); text-align: center;">
+    <div class="container">
+        <h2 class="logo" style="margin-bottom: 20px;">Ev1lofDestruKtion<span>.</span></h2>
+        <p style="color: var(--text-muted); margin-bottom: 10px;">Created by Himank / Krishna Garg</p>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">© 2026 All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>
