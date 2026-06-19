@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ev1l.netlify.app/sitemap.xml
